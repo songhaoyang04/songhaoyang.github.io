@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学习网站</title>
+	<style>
+	* {
+		margin:0px;
+		padding: 0px;
+	}
+	ul {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+	}
+	body {
+		background-image: url(images/background.jpg);
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		/* 背景图固定 不然下面会变成空白 */
+		background-attachment: fixed;
+	}
+	#xxwz {
+		font-size: 40px;
+		text-align: center;
+	}
+	.header {
+		position: absolute;
+		width: 100%;
+		height: 500px;
+		z-index: 1;
+		/* background: red; */
+	}
+	.header-content {
+		position: relative;
+		width: 1000px;
+		margin: 0px auto;
+	}
+	.list-nav {
+		position: absolute;
+		left: 350px;
+		top: 30px;
+
+	}
+	.list-nav>li {
+		float: left;
+		width: 100px;
+		height: 30px;
+		line-height: 30px;
+		background-color: dimgrey;
+		text-align: center;
+		transition: all 1s;
+	}
+	.list-nav > li:hover {
+		cursor: pointer;
+		background-color: black;
+		color: white;
+	}
+	.list-nav >li:hover .list-navtwo,
+	.list-nav >li:hover .list-navthree,
+	.list-nav >li:hover .list-navfour
+	 {
+		display: inline-block;
+		/* transition: none; */
+	}
+	.list-navtwo,
+	.list-navthree,
+	.list-navfour {
+		position: absolute;
+		left: -250px;
+		top: 30px;
+		display: none;
+		padding: 20px 30px;
+		width: 740px;
+		height: 680px;
+		/* 1是不透明  0.5半透明 */
+		background-color: rgba(0,0,0,0.6);
+		text-align: left;
+		box-shadow: 0px 0px 30px rgba(0,0,0,0.3);
+		/* 解决无法点击轮播图 */
+		z-index: 1;
+	}
+	.list-navfour h2 {
+		text-align:center;
+		color: white; 
+		font-size: 40px;
+		line-height: 600px;
+	}
+	.list-navtwo-html {
+		height: 30px;
+		/* background-color: red; */
+		line-height: 30px;
+	}
+	.list-navtwo-img,
+	.list-navtwo-marquee,
+	.list-navtwo-audiovideo {
+		margin-top: 10px;
+		height: 60px;
+		/* background-color: red; */
+		line-height: 30px;
+	}
+	.list-navtwo-table {
+		margin-top: 10px;
+		height: 90px;
+		/* background-color: red; */
+		line-height: 30px;
+	}
+	.list-navtwo-form {
+		margin-top: 10px;
+		height: 180px;
+		/* background-color: red; */
+		line-height: 30px;
+	}
+	.list-navtwo-html a,
+	.list-navtwo-font a,
+	.list-navtwo-img a,
+	.list-navtwo-a a,
+	.list-navtwo-table a,
+	.list-navtwo-uloldl a,
+	.list-navtwo-form a,
+	.list-navtwo-marquee a,
+	.list-navtwo-audiovideo a,
+	.list-navtwo-qita a {
+		margin-left: 10px;
+		color: pink;
+	}
+	.list-navtwo-html a:hover,
+	.list-navtwo-font a:hover,
+	.list-navtwo-img a:hover,
+	.list-navtwo-a a:hover,
+	.list-navtwo-table a:hover,
+	.list-navtwo-uloldl a:hover,
+	.list-navtwo-form a:hover,
+	.list-navtwo-marquee a:hover,
+	.list-navtwo-audiovideo a:hover,
+	.list-navtwo-qita a:hover {
+		color: white;
+		text-decoration: underline;
+	}
+	.list-navtwo-font,
+	.list-navtwo-a,
+	.list-navtwo-uloldl,
+	.list-navtwo-qita {
+		margin-top: 10px;
+		height: 30px;
+		/* background-color: red; */
+		line-height: 30px;
+	}
+	.wrap-header {
+		width: 100%;
+		height: 500px;
+		/* margin-top: 60px; */
+	}
+	.wrap-img {
+		width: 739px;
+		height: 500px;
+		margin: 0px auto;
+		margin-top: 60px;
+		/* 使盒子只能显示739px里面的  不能显示外面的 */
+		overflow: hidden;
+	}
+	#a-img {
+		position: relative;
+		width: 400%;
+		left: 0px;
+		transition: all 1s;
+	}
+	#a-img img{
+		float: left;
+	}
+	.wrap {
+		width: 100%;
+	}
+	.wrap-content {
+		width: 900px;
+		height: 1200px;
+		margin: 0px auto;
+		background-color: rgb(170, 170, 170);
+		/* border: 3px solid black; */
+		border-top: 3px solid red;
+		border-left: 3px solid blue;
+		border-right: 3px solid green;
+		border-bottom: 3px solid yellow;
+	}
+	.warp-content-header {
+		height: 600px;
+		/* background-color: red; */
+	}
+	.warp-content-header-left {
+		float: left;
+		width: 426px;
+		height: 576px;
+		/* background-color: green; */
+		padding: 10px;
+		border: 2px solid gray;
+	}
+	.warp-content-header-right {
+		float: right;
+		width: 426px;
+		height: 576px;
+		/* background-color: yellow; */
+		padding: 10px;
+		border: 2px solid gray;
+	}
+	.warp-content-footer {
+		height: 576px;
+		/* background-color: aquamarine; */
+		padding: 10px;
+		border: 2px solid gray;
+	}
+	.warp-content-header p{
+		margin: 10px 0px;
+	}
+	.wrap-content h2 {
+		text-align: center;
+	}
+	.warp-content-footer h3 {
+		text-align: center;
+		line-height: 500px;
+		font-size: 30px;
+	}
+	</style>
+</head>
+<body>
+	<h1 id="xxwz">学习网站</h1>
+	<div class="wrap-header">
+		<div class="header">
+			<div class="header-content">
+				<ul class="list-nav">
+					<!-- html区域 -->
+					<li>
+						HTML
+						<!-- 二级列表 -->
+						<ul class="list-navtwo">
+							<li>
+								<div class="list-navtwo-html">
+									<span>大骨架</span>
+									<a href="html/html.html">html</a>
+									<a href="html/html.html">head</a>
+									<a href="html/html.html">title</a>
+									<a href="html/html.html">body</a>
+									<a href="#">meta</a>
+									<a href="#">charset(属)</a>
+									<a href="#">utf-8(值)</a>
+								</div>
+								<div class="list-navtwo-font">
+									<span>文&nbsp;&nbsp;&nbsp;字</span>
+									<a href="#">font</a>
+									<a href="#">size(属)</a>
+									<a href="#">color(属)</a>
+									<a href="#">face(属)</a>
+									<a href="#">b+i+u+s</a>
+									<a href="#">h1-h6</a>
+									<a href="#">p</a>
+								</div>
+								<div class="list-navtwo-img">
+									<span>图&nbsp;&nbsp;&nbsp;片</span>
+									<a href="#">img</a>
+									<a href="#">src(属)</a>
+									<a href="#">alt(属)</a>
+									<a href="#">title(属)</a>
+									<a href="#">width(属)</a>
+									<a href="#">height(属)</a>
+									<a href="#">align(属)</a>
+									<a href="#">left+right(值)</a>
+									<a href="#" style="margin-left: 60px;">valign(属)</a>
+									<a href="#">top+middle+bottom(值)</a>
+								</div>
+								<div class="list-navtwo-a">
+								 	<span>超链接</span>
+									<a href="#">a</a>
+									<a href="#">href(属)</a>
+									<a href="#">target(属)</a>
+									<a href="#">_self+_blank(值)</a>
+								</div>
+								<div class="list-navtwo-table">
+									<span>表&nbsp;&nbsp;&nbsp;格</span>
+									<a href="#">table</a>
+									<a href="#">caption</a>
+									<a href="#">tr</a>
+									<a href="#">td</a>
+									<a href="#">th</a>
+									<a href="#">colspan(属)</a>
+									<a href="#">rowspan(属)</a>
+									<a href="#">border(属)</a>
+									<a href="#">cellspacing(属)</a>
+									<a href="#" style="margin-left: 60px;">cellpadding(属)</a>
+									<a href="#">width(属)</a>
+									<a href="#">height(属)</a>
+									<a href="#">align(属)</a>
+									<a href="#">left+center+right(值)</a>
+									<a href="#" style="margin-left: 60px;">valign(属)</a>
+									<a href="#">top+middle+bottom(值)</a>
+									<a href="#">bgcolor(属)</a>
+									<a href="#">bordercolor(属)</a>
+								</div>
+								<div class="list-navtwo-uloldl">
+									<span>列&nbsp;&nbsp;&nbsp;表</span>
+									<a href="#">ul</a>
+									<a href="#">ol</a>
+									<a href="#">li</a>
+									<a href="#">type(属)</a>
+									<a href="#">disc+circle+square(值)</a>
+									<a href="#">dl</a>
+									<a href="#">dt</a>
+									<a href="#">dd</a>
+								</div>
+								<div class="list-navtwo-form">
+									<span>表&nbsp;&nbsp;&nbsp;单</span>
+									<a href="#">form</a>
+									<a href="#">action(属)</a>
+									<a href="#">method(属)</a>
+									<a href="#">post+get(值)</a>
+									<a href="#">input</a>
+									<a href="#">type(属)</a>
+									<a href="#">name(属)</a>
+									<a href="#">id(属)</a>
+									<a href="#" style="margin-left: 60px;">value(属)</a>
+									<a href="#">text+size+maxlength+value</a>
+									<a href="#">password+size+maxlength+value</a>
+									<a href="#" style="margin-left: 61px;">radio+name+checked+value</a>
+									<a href="#">checkbox+name+checked+value</a>
+									<a href="#">submit+value</a>
+									<a href="#" style="margin-left: 60px;">reset+value</a>
+									<a href="#">textarea+cols+rows+value+warp+disabled+readonly</a>
+									<a href="#">label+for</a>
+									<a href="#" style="margin-left: 60px;">select+option+size+multiple+selected+disabled+readonly+value+name</a>
+									<a href="#" style="margin-left: 60px;">image+src+width+height+name</a>
+									<a href="#">file+name</a>
+									<a href="#">button</a>
+								</div>
+								<div class="list-navtwo-marquee">
+									<span>滚&nbsp;&nbsp;&nbsp;动</span>
+									<a href="#">marquee</a>
+									<a href="#">direction+left+right</a>
+									<a href="#">behavior+scroll+slide+alternate+loop+infinite</a>
+									<a href="#" style="margin-left: 60px;">scrollamount(属)</a>
+									<a href="#">scrolldelay(属)</a>
+									<a href="#">bgcolor(属)</a>
+								</div>
+								<div class="list-navtwo-audiovideo">
+									<span>音视频</span>
+									<a href="#">audio</a>
+									<a href="#">source</a>
+									<a href="#">src</a>
+									<a href="#">controls</a>
+									<a href="#">autoplay</a>
+									<a href="#">loop</a>
+									<br />
+									<a href="#" style="margin-left: 63px;">video</a>
+									<a href="#">source</a>
+									<a href="#">src</a>
+									<a href="#">controls</a>
+									<a href="#">autoplay</a>
+									<a href="#">loop</a>
+									<a href="#">width</a>
+									<a href="#">height</a>
+									<a href="#">muted</a>
+									<a href="#">poster</a>
+								</div>
+								<div class="list-navtwo-qita">
+									<span>其&nbsp;&nbsp;&nbsp;他</span>
+									<a href="#">hr</a>
+									<a href="#">br</a>
+									<a href="#">& nbsp;</a>
+									<a href="#">sup+sub</a>
+									<a href="#">&lt;!-- --&gt;</a>
+									<a href="#"></a>
+								</div>
+							</li>
+						</ul>
+					</li>
+						<!-- css区域 -->
+						<li>
+							CSS
+						<!-- 二级列表 -->
+							<ul class="list-navthree">
+								<li>
+									<div class="list-navthree-css">
+										<span>css加入html的方式</span>
+										<a href="#">行内式</a>
+										<a href="#">内联式</a>
+										<a href="#">外链式</a>
+									</div>
+									<div class="listnavthree-jcxzq">
+
+									</div>
+									<div class="listnavthree-fhxzq">
+										
+									</div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+									<div class="listnavthree-"></div>
+								</li>
+							</ul>
+						</li>
+						<!-- js区域 -->
+						<li>
+							JS
+						<!-- 二级列表 -->
+							<ul class="list-navfour">
+								<li>
+									<h2>暂无</h2>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+				<div class="wrap-img">
+					<div id="a-img">
+					<a href="https://www.runoob.com/" target="_blank"><img src="images/RUNOOB.jpg" alt="RUNOOB.COM" id="RUNOOB" /></a>
+					<a href="https://www.w3school.com.cn/h.asp"  target="_blank"><img src="images/W3school.jpg" alt="W3school" id="W3school" /></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wrap">
+			<div class="wrap-content">
+				<div class="warp-content-header">
+					<div class="warp-content-header-left">
+						<h2>HTML</h2>
+						<p>HTML (Hypertext Marked Language) 即 超文本标记语言。</p>
+						<p>扩展名有两种:分别是 .htm 和 .html &nbsp;&nbsp;&nbsp;例：1.html</p>
+						<p>web标准分三层架构:  Html结构 css表现 js 行为。</p>
+						<h3>单标签:</h3>
+						<p><标签 /></p>
+						<p><标签 属性=”值”  /></p>
+						<h3>双标签:</h3>
+						<p><标签>< / 标签></p>
+						<p><标签 属性=”值”>< / 标签></p>
+						<h3>嵌套标签：</h3>
+						<p><标签1><标签2>< / 标签2>< / 标签1></p>
+					</div>
+					<div class="warp-content-header-right">
+						<h2>CSS</h2>
+						<p>Css是Cascading Style Sheet 的缩写，中文即“层叠样式表”用于装饰，美化网页,布局和外观显示样式</p>
+						<p>CSS的扩展名为：.css &nbsp;&nbsp;&nbsp;例：1.css</p>
+						<h3>CSS加入到html网页里面有三种方式</h3>
+						<p>1. 行内式
+						   2. 内部样式表
+						   3. 外部样式表
+						</p>
+						<h3>CSS的基础选择器有四种</h3>
+						<p>1.id选择器
+							2.标签选择器
+							3.类选择器
+							4.通配符选择器</p>
+						<h3>CSS的复合选择器有五种</h3>
+						<p>1.后代选择器
+							2.子元素选择器
+							3.交集选择器
+							4.并集选择器
+							&nbsp;
+							5.链接伪类选择器
+							</p>
+					</div>
+				</div>
+				<div class="warp-content-footer">
+					<h2>JS</h2>
+					<h3>无</h3>
+				</div>
+			</div>
+	</div>
+</body>
+	<script src="js/1.js"></script>
+</html>
